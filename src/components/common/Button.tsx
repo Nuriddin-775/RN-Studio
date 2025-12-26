@@ -2,23 +2,23 @@
  * Button Component
  * Reusable button with multiple variants and sizes
  */
-import { Pressable, Text, ActivityIndicator, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { colors } from "@constants/colors";
+import {colors} from "@constants/colors"
+import {Feather} from "@expo/vector-icons"
+import {ActivityIndicator, Pressable, Text, View} from "react-native"
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger";
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "danger"
+type ButtonSize = "sm" | "md" | "lg"
 
 interface ButtonProps {
-  title: string;
-  onPress: () => void;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  disabled?: boolean;
-  loading?: boolean;
-  fullWidth?: boolean;
-  icon?: keyof typeof Feather.glyphMap;
-  iconPosition?: "left" | "right";
+  title: string
+  onPress: () => void
+  variant?: ButtonVariant
+  size?: ButtonSize
+  disabled?: boolean
+  loading?: boolean
+  fullWidth?: boolean
+  icon?: keyof typeof Feather.glyphMap
+  iconPosition?: "left" | "right"
 }
 
 export function Button({
@@ -32,14 +32,14 @@ export function Button({
   icon,
   iconPosition = "left",
 }: ButtonProps) {
-  const isDisabled = disabled || loading;
+  const isDisabled = disabled || loading
 
   // Size configurations
   const sizeConfig = {
-    sm: { px: "px-3", py: "py-1.5", text: "text-xs", icon: 14 },
-    md: { px: "px-4", py: "py-2.5", text: "text-sm", icon: 16 },
-    lg: { px: "px-6", py: "py-3", text: "text-base", icon: 18 },
-  };
+    sm: {px: "px-3", py: "py-1.5", text: "text-xs", icon: 14},
+    md: {px: "px-4", py: "py-2.5", text: "text-sm", icon: 16},
+    lg: {px: "px-6", py: "py-3", text: "text-base", icon: 18},
+  }
 
   // Variant configurations
   const variantConfig = {
@@ -68,10 +68,10 @@ export function Button({
       text: "text-white font-semibold",
       border: "",
     },
-  };
+  }
 
-  const config = sizeConfig[size];
-  const variantStyle = variantConfig[variant];
+  const config = sizeConfig[size]
+  const variantStyle = variantConfig[variant]
 
   return (
     <Pressable
@@ -89,14 +89,14 @@ export function Button({
         <ActivityIndicator
           size="small"
           color={variant === "primary" ? colors.background : colors.accent}
-          style={{ marginRight: title ? 8 : 0 }}
+          style={{marginRight: title ? 8 : 0}}
         />
       ) : icon && iconPosition === "left" ? (
         <Feather
           name={icon}
           size={config.icon}
           color={variant === "primary" ? colors.background : colors.accent}
-          style={{ marginRight: 6 }}
+          style={{marginRight: 6}}
         />
       ) : null}
 
@@ -107,10 +107,9 @@ export function Button({
           name={icon}
           size={config.icon}
           color={variant === "primary" ? colors.background : colors.accent}
-          style={{ marginLeft: 6 }}
+          style={{marginLeft: 6}}
         />
       )}
     </Pressable>
-  );
+  )
 }
-

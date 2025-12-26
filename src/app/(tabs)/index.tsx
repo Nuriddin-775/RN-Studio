@@ -31,7 +31,6 @@ export default function HomeScreen() {
 
   return (
     <ScreenLayout>
-      {/* Search Bar */}
       <View className="flex-row items-center bg-surface-elevated border border-border rounded-lg px-4 py-3 mb-6">
         <Feather name="search" size={18} color={colors.textMuted} />
         <TextInput
@@ -48,7 +47,6 @@ export default function HomeScreen() {
         )}
       </View>
 
-      {/* Search Results or Categories */}
       {filteredLabs !== null ? (
         <SectionLayout title={`Results (${filteredLabs.length})`} icon="search">
           {filteredLabs.length > 0 ? (
@@ -75,7 +73,6 @@ export default function HomeScreen() {
         </SectionLayout>
       )}
 
-      {/* Version footer */}
       <View className="items-center mt-6 pb-4">
         <Caption>RN Playground v{APP_VERSION}</Caption>
       </View>
